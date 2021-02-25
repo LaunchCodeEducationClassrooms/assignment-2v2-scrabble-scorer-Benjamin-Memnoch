@@ -3,6 +3,9 @@
 const input = require("readline-sync");
 
 const oldPointStructure = {
+  name: "Scrabble",
+  description: "The traditional scoring algorighm.",
+  scorerFunction: "Uses the oldScrabbleScorer() function to determine the score for a given word.",
   1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
   2: ['D', 'G'],
   3: ['B', 'C', 'M', 'P'],
@@ -13,13 +16,20 @@ const oldPointStructure = {
 };
 
 const simpleScoreStructure = {
+  //name: "Simple Score",
+  //description: "Each letter is worth 1 point.",
+  //scorerFunction: "A function that returns a score based on the number of vowels and consonants.",
   1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T', 'D', 'G','B', 'C', 'M', 'P','F', 'H', 'V', 'W', 'Y','K','J', 'X', 'Q', 'Z']
 };
 
 const vowelBonusScoreStructure = {
+  name: "Bonus Vowels",
+  description: "Vowels are 3 pts. consonants are 1 pt.",
+  scorerFunction: "A function that returns a score based on the number of vowels and consonants.",
   1: ['A', 'E', 'I', 'O', 'U', 'Y'],
   3: ['L', 'N', 'R', 'S', 'T', 'D', 'G','B', 'C', 'M', 'P','F', 'H', 'V', 'W', 'Y','K','J', 'X','Q', 'Z']
 };
+
 
 
 function oldScrabbleScorer(word) {
@@ -88,9 +98,31 @@ return vowelBonusScore;
 
 let scrabbleScore;
 
-const scoringAlgorithms = [];
+let simpleScorer = {
+  name: "Simple Score",
+  description: "Each letter is worth 1 point.",
+  scorerFunction: simpleScore 
+};
+
+let vowelBonusScorer = {
+  name: "Bonus Vowels",
+  description: "Vowels are 3 pts. consonants are 1 pt.",
+  scorerFunction: vowelBonusScore
+};
+
+let oldScrabbleScorerer = {
+  name: "Scrabble",
+  description: "The traditional scoring algorighm.",
+  scorerFunction: oldScrabbleScorer
+};
+
+
+const scoringAlgorithms = [simpleScorer, vowelBonusScorer, oldScrabbleScorerer];
 
 function scorerPrompt() {}
+
+
+
 
 function transform() {};
 
