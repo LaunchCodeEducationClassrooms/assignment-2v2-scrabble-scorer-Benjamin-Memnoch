@@ -12,6 +12,11 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
+const simpleScoreStructure = {
+  1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T', 'D', 'G','B', 'C', 'M', 'P','F', 'H', 'V', 'W', 'Y','K','J', 'X', 'Q', 'Z']
+};
+
+
 function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
 	let letterPoints = "";
@@ -36,12 +41,26 @@ function initialPrompt() {
    console.log("Let's play some Scrabble!");
   word = input.question("\n\nEnter a word to score: ");
   console.log(oldScrabbleScorer(word));
+  console.log(simpleScore(word));
   
   };
 
   
+function simpleScore(word){
+word = word.toUpperCase();
+let simpleScore = "";
 
-let simpleScore;
+for (let i = 0; i < word.length; i++) {
+   for (const pointValue in simpleScoreStructure) {
+     if (simpleScoreStructure[pointValue].includes(word[i])){
+      simpleScore += `Points for '${word[i]}': ${pointValue}\n`
+     }
+   }
+  }
+
+return simpleScore;
+
+}
 
 let vowelBonusScore;
 
