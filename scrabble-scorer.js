@@ -53,8 +53,8 @@ function initialPrompt() {
   console.log(`Old Scrabble Scorer Value:  ${oldScrabbleScorer(word)}`);
   console.log(`Simple Scorer Value: ${simpleScore(word)}`);
   console.log(`Vowel Bonus Scorer Value: ${vowelBonusScore(word)}`);
-  console.log("algorithm name: ", scoringAlgorithms[1].name);
-  console.log("scorerFunction result: ", scoringAlgorithms[1].scorerFunction("Javascript"));
+  console.log("algorithm name: ", scoringAlgorithms[0].name);
+  console.log("scorerFunction result: ", scoringAlgorithms[0].scorerFunction(word));
   return word;
   };
 
@@ -122,18 +122,26 @@ let oldScrabbleScorerer = {
 const scoringAlgorithms = [simpleScorer, vowelBonusScorer, oldScrabbleScorerer];
 
 function scorerPrompt(word) {
-value = input.question(`Enter the number of the desired scoring method: \n0: Simple Scorer \n1: Vowel Bonus Scoring \n2: Scrabble Scorer\n`);
 
-if (value = 0) {
-  simpleScorer(word);
+word = initialPrompt();
+
+value = input.question(`Which scoring algorithm would you like to use?\n \n0 - Simple: One point per character \n1 - Vowel Bonus: Vowels are worth 3 points \n2 - Scrabble: Uses scrabble point system\nEnter 0 , 1, or 2: `);
+
+count = Number(value);
+
+if (count === 0) {
+ console.log("algorithm name: ", scoringAlgorithms[0].name);
+ //console.log(scoringAlgorithms[0].scorerFunction);
+ //console.log(initialPrompt(word);
+ console.log("Score for: ", scoringAlgorithms[0].scorerFunction(word));
 
 };
 
-//if (value = 1) {
+//if (value === 1) {
   //vowelBonusScore(word);
  // }
 
-//if (value = 2){
+//if (value === 2){
   //oldScrabbleScorer(word);
   //};
 
@@ -145,8 +153,9 @@ function transform() {};
 let newPointStructure;
 
 function runProgram() {
+  //scorerPrompt();
   initialPrompt();
- // scorerPrompt(word); 
+  scorerPrompt(); 
 }
 
 // Don't write any code below this line //
