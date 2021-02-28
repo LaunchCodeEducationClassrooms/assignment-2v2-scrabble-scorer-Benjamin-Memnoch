@@ -123,7 +123,6 @@ const scoringAlgorithms = [simpleScorer, vowelBonusScorer, oldScrabbleScorerer];
 
 function scorerPrompt(word) {
 
-word = initialPrompt();
 
 value = input.question(`Which scoring algorithm would you like to use?\n \n0 - Simple: One point per character \n1 - Vowel Bonus: Vowels are worth 3 points \n2 - Scrabble: Uses scrabble point system\nEnter 0 , 1, or 2: `);
 
@@ -137,13 +136,15 @@ if (count === 0) {
 
 };
 
-//if (value === 1) {
-  //vowelBonusScore(word);
- // }
+if (count === 1) {
+  console.log("algorithm name: ", scoringAlgorithms[1].name);
+ console.log("Score for: ", scoringAlgorithms[1].scorerFunction(word));
+  }
 
-//if (value === 2){
-  //oldScrabbleScorer(word);
-  //};
+if (count === 2){
+ console.log("algorithm name: ", scoringAlgorithms[2].name);
+ console.log("Score for: ", scoringAlgorithms[2].scorerFunction(word));
+ };
 
 };
 
@@ -155,7 +156,7 @@ let newPointStructure;
 function runProgram() {
   //scorerPrompt();
   initialPrompt();
-  scorerPrompt(); 
+  scorerPrompt(word); 
 }
 
 // Don't write any code below this line //
