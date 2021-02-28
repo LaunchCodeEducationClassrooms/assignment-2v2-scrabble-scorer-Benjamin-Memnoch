@@ -129,21 +129,19 @@ value = input.question(`Which scoring algorithm would you like to use?\n \n0 - S
 count = Number(value);
 
 if (count === 0) {
- console.log("algorithm name: ", scoringAlgorithms[0].name);
- //console.log(scoringAlgorithms[0].scorerFunction);
- //console.log(initialPrompt(word);
- console.log("Score for: ", scoringAlgorithms[0].scorerFunction(word));
+ //console.log("algorithm name: ", scoringAlgorithms[0].name);
+ console.log("Score for: " + "'" + word + "'" + ":", scoringAlgorithms[0].scorerFunction(word));
 
 };
 
 if (count === 1) {
-  console.log("algorithm name: ", scoringAlgorithms[1].name);
- console.log("Score for: ", scoringAlgorithms[1].scorerFunction(word));
+ //console.log("algorithm name: ", scoringAlgorithms[1].name);
+ console.log("Score for: " + "'" + word + "'" + ":", scoringAlgorithms[1].scorerFunction(word));
   }
 
 if (count === 2){
- console.log("algorithm name: ", scoringAlgorithms[2].name);
- console.log("Score for: ", scoringAlgorithms[2].scorerFunction(word));
+ //console.log("algorithm name: ", scoringAlgorithms[2].name);
+ console.log("Score for " + "'" + word + "'" + ":", scoringAlgorithms[2].scorerFunction(word));
  };
 
 };
