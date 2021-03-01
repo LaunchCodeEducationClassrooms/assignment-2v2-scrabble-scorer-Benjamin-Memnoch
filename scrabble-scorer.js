@@ -21,8 +21,6 @@ const vowelBonusScoreStructure = {
   1: ['L', 'N', 'R', 'S', 'T', 'D', 'G','B', 'C', 'M', 'P','F', 'H', 'V', 'W', 'Y','K','J', 'X','Q', 'Z']
 };
 
-
-
 function oldScrabbleScorer(word) {
 	word = word.toUpperCase();
 	let letterPoints = "";
@@ -50,11 +48,11 @@ function oldScrabbleScorer(word) {
 function initialPrompt() {
    console.log("Let's play some Scrabble!");
   word = input.question("\n\nEnter a word to score: ");
-  console.log(`Old Scrabble Scorer Value:  ${oldScrabbleScorer(word)}`);
-  console.log(`Simple Scorer Value: ${simpleScore(word)}`);
-  console.log(`Vowel Bonus Scorer Value: ${vowelBonusScore(word)}`);
-  console.log("algorithm name: ", scoringAlgorithms[0].name);
-  console.log("scorerFunction result: ", scoringAlgorithms[0].scorerFunction(word));
+ // console.log(`Old Scrabble Scorer Value:  ${oldScrabbleScorer(word)}`);
+ // console.log(`Simple Scorer Value: ${simpleScore(word)}`);
+ // console.log(`Vowel Bonus Scorer Value: ${vowelBonusScore(word)}`);
+ // console.log("algorithm name: ", scoringAlgorithms[0].name);
+ // console.log("scorerFunction result: ", scoringAlgorithms[0].scorerFunction(word));
   return word;
   };
 
@@ -100,6 +98,29 @@ return totalPointValue;
 
 let scrabbleScore;
 
+const scoringAlgorithms = [
+
+  {
+  name: "Simple Score",
+  description: "Each letter is worth 1 point.",
+  scorerFunction: simpleScore
+  },
+
+ {
+  name: "Bonus Vowels",
+  description: "Vowels are 3 pts. consonants are 1 pt.",
+  scorerFunction: vowelBonusScore
+},
+
+{
+  name: "Scrabble",
+  description: "The traditional scoring algorithm.",
+  scorerFunction: oldScrabbleScorer
+},
+
+];
+
+/*
 let simpleScorer = {
   name: "Simple Score",
   description: "Each letter is worth 1 point.",
@@ -120,6 +141,7 @@ let oldScrabbleScorerer = {
 
 
 const scoringAlgorithms = [simpleScorer, vowelBonusScorer, oldScrabbleScorerer];
+*/
 
 function scorerPrompt(word) {
 
@@ -147,14 +169,40 @@ if (count === 2){
 };
 
 
-function transform(newPointStructure) {
+function transform(oldPointStructure) {
+for (letters in oldPointStructure) {
+  for ( i =0; i < oldPointStructure['1'].length; i++) {
+    oldPointStructure[oldPointStructure['1'][i]] = 1;
+  } 
+  for ( i =0; i < oldPointStructure['2'].length; i++) {
+    oldPointStructure[oldPointStructure['2'][i]] = 2;
+  }
+  for ( i =0; i < oldPointStructure['3'].length; i++) {
+    oldPointStructure[oldPointStructure['3'][i]] = 3;
+  }
+  for ( i =0; i < oldPointStructure['4'].length; i++) {
+    oldPointStructure[oldPointStructure['4'][i]] = 4;
+  }
+  for ( i =0; i < oldPointStructure['5'].length; i++) {
+    oldPointStructure[oldPointStructure['5'][i]] = 5;
+  }
+  for ( i =0; i < oldPointStructure['8'].length; i++) {
+    oldPointStructure[oldPointStructure['8'][i]] = 8;
+  }
+  for ( i =0; i < oldPointStructure['10'].length; i++) {
+    oldPointStructure[oldPointStructure['10'][i]] = 10;
+  }
 
+
+}
 
 
 
 };
 
-const newPointStructure = {
+let newPointStructure = transform(oldPointStructure);
+
+/*{
 
   'a': 1, 
   'b': 3,
@@ -189,7 +237,7 @@ const newPointStructure = {
   //5: ['K'],
   //8: ['J', 'X'],
   //10: ['Q', 'Z']
-};
+};*/
 
 
 
@@ -197,9 +245,10 @@ function runProgram() {
   //scorerPrompt();
   initialPrompt();
   scorerPrompt(word); 
-  console.log("letter a: ", newPointStructure.a);
-  console.log("letter j: ", newPointStructure.j);
-  console.log("letter z: ", newPointStructure["z"]);
+  console.log(newPointStructure);
+  //console.log("letter a: ", newPointStructure.a);
+  //console.log("letter j: ", newPointStructure.j);
+  //console.log("letter z: ", newPointStructure["z"]);
 
 }
 
